@@ -1,2 +1,1 @@
-# alx-higher_level_programming
-ALX Python and C Programming Task
+# 0x00-python-hello_world
