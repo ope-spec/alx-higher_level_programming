@@ -1,9 +1,13 @@
 #!/usr/bin/python3
 import random
-number = random.randint(-10,10)
+
+# Generate a random integer between -10 and 10 (inclusive)
+number = random.randint(-10, 10)
+
+# Check if the number is positive, negative, or zero
 if number > 0:
-    print(number, "is positive")
+    print(f"{number} is positive")
 elif number == 0:
-    print(number, "is zero")
+    print(f"{number} is zero")
 else:
-    print(number, "is negative")
+    print(f"{number} is negative")
