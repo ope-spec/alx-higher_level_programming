@@ -1,5 +1,4 @@
 #!/usr/bin/python3
-"""
-Simple variable
-"""
 a = 98
+"""Simple variable
+"""
