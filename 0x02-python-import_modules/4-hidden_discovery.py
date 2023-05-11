@@ -1,7 +1,4 @@
 #!/usr/bin/python3
-import os.path
-if os.path.exists("hidden_4.pyc"):
-    os.remove("hidden_4.pyc")
 
 if __name__ == "__main__":
     import hidden_4
