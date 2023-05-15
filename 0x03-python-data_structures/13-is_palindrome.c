@@ -2,28 +2,49 @@
 
 
 /**
-* is_palindrome - checks if a singly linked list is a palindrome
-* @head: pointer to the head of the list
-*
-* Return: 0 if not a palindrome, 1 if it is a palindrome
+* is_palindrome - checks if a linked list is a palindrome
+* @head: pointer to the head pointer
+* Return: 1 for palindrome, 0 if not
 */
 int is_palindrome(listint_t **head)
 {
-listint_t *current = *head;
-listint_t *temp = *head;
-int stack[1024], top = -1;
+if (*head == NULL || (*head)->next == NULL)
+return (1);
 
-while (current != NULL)
+listint_t *slow = *head, *fast = *head;
+while (fast && fast->next)
 {
-stack[++top] = current->n;
-current = current->next;
+slow = slow->next;
+fast = fast->next->next;
 }
 
-while (temp != NULL)
+listint_t *prev = NULL, *current = slow, *next = NULL;
+while (current)
 {
-if (temp->n != stack[top--])
+next = current->next;
+current->next = prev;
+prev = current;
+current = next;
+}
+
+listint_t *p1 = *head, *p2 = prev;
+while (p2)
+{
+if (p1->n != p2->n)
 return (0);
-temp = temp->next;
+p1 = p1->next;
+p2 = p2->next;
 }
+
+current = prev, prev = NULL;
+while (current)
+{
+next = current->next;
+current->next = prev;
+prev = current;
+current = next;
+}
+slow->next = prev;
+
 return (1);
 }
