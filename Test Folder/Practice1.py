@@ -28,8 +28,19 @@ for i in range(4):
 a = 12
 if a > 2:
     if a % 2 == 0:
-        print("Holberton")
+        print("Holberton\n")
     else:
-        print("C is fun")
+        print("C is fun\n")
 else:
-    print("School")
+    print("School\n")
+
+
+for i in range(0, 3):
+    print(i, end=" \n")
+
+
+a = { 'id': 89, 'name': "John", 'projects': [1, 2, 3, 4] }
+a.get('projects')[3]
+
+for i in [1, 3, 4, 2]:
+     print(i, end=" ")
