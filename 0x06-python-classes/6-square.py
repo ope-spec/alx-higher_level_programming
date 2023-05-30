@@ -4,7 +4,18 @@
 
 
 class Square:
-    """defines a square"""
+    """
+    A class representing a square.
+
+    Attributes:
+        size (int): The length of a side of the square.
+        position (tuple): The position of the square as coordinates.
+
+    Methods:
+        area(): Calculates and returns the area of the square.
+        pos_print(): Returns the position of the square as spaces.
+        my_print(): Prints the square in its position.
+    """
 
     def __init__(self, size=0, position=(0, 0)):
         """Create a Square
@@ -66,18 +77,18 @@ class Square:
 
     def pos_print(self):
         """returns the position in spaces"""
-        pos = ""
+        square_str = ""
         if self.size == 0:
             return "\n"
         for w in range(self.position[1]):
-            pos += "\n"
+            square_str += "\n"
         for w in range(self.size):
             for i in range(self.position[0]):
-                pos += " "
+                square_str += " "
             for j in range(self.size):
-                pos += "#"
-            pos += "\n"
-        return pos
+                square_str += "#"
+            square_str += "\n"
+        return square_str
 
     def my_print(self):
         """print the square in position"""
