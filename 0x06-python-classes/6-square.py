@@ -20,8 +20,8 @@ class Square:
     def __init__(self, size=0, position=(0, 0)):
         """Create a Square
         Args:
-            size: length of a side of Square
-            position: where the square is (coordinates)
+            size (int, optional): The length of a side of the square (default is 0).
+            position (tuple, optional): The position of the square as coordinates (default is (0, 0)).
         """
         self.size = size
         self.position = position
@@ -31,10 +31,11 @@ class Square:
 
     @property
     def size(self):
-        """"The propery of size as the len of a side of Square
-        Raises:
-            TypeError: if size != int
-            ValueError: if size < 0
+        """
+        Returns a string representation of the square using my_print().
+
+        Returns:
+            str: The string representation of the square.
         """
         return self.__size
 
@@ -48,18 +49,28 @@ class Square:
 
     @property
     def position(self):
-        """property of the coordinates of this Square
+        """
+        Sets the size of the square.
+
+        Args:
+            value (int): The size value to set.
+
         Raises:
-            TypeError: if value != a tuple of 2 integers < 0
+            TypeError: If the size is not an integer.
+            ValueError: If the size is less than 0.
         """
         return self.__position
 
     @position.setter
     def position(self, value):
-        """set the position of this Square
-        Args: value as a tuple of two positive integers
+        """
+        Sets the position of the square.
+
+        Args:
+            value (tuple): The position value to set.
+
         Raises:
-            TypeError: if value is not a tuple or any int in tuple < 0
+            TypeError: If the position is not a tuple of two positive integers.
         """
         if not isinstance(value, tuple):
             raise TypeError('position must be a tuple of 2 positive integers')
@@ -70,13 +81,21 @@ class Square:
         self.__position = value
 
     def area(self):
-        """Get the area of a Square
-        Returns: The size squared
+        """
+        Calculates and returns the area of the square.
+
+        Returns:
+            int: The area of the square.
         """
         return self.__size * self.__size
 
     def pos_print(self):
-        """returns the position in spaces"""
+        """
+        Returns the position of the square as spaces.
+
+        Returns:
+            str: The position of the square.
+        """
         square_str = ""
         if self.size == 0:
             return "\n"
@@ -91,5 +110,5 @@ class Square:
         return square_str
 
     def my_print(self):
-        """print the square in position"""
+        """Prints the square in its position."""
         print(self.pos_print(), end='')
