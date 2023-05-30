@@ -7,7 +7,8 @@ class Square:
     """A class representing a square."""
 
     def __init__(self, size=0, position=(0, 0)):
-        """Initializes a square with a given size and position.
+        """
+        Initializes a square with a given size and position.
         Args:
             size (int, optional): The size of the square (default is 0).
             position (tuple, optional): The position of the square (default is (0, 0)).
@@ -24,7 +25,8 @@ class Square:
 
     @size.setter
     def size(self, value):
-        """Sets the size of the square.
+        """
+        Sets the size of the square.
         Args:
             value (int): The size value to set.
         Raises:
@@ -47,7 +49,8 @@ class Square:
 
     @position.setter
     def position(self, value):
-        """Sets the position of the square.
+        """
+        Sets the position of the square.
         Args:
             value (tuple): The position value to set.
         Raises:
@@ -62,7 +65,8 @@ class Square:
             self.__position = value
 
     def area(self):
-        """Calculates and returns the area of the square.
+        """
+        Calculates and returns the area of the square.
         Returns:
             int: The area of the square.
         """
