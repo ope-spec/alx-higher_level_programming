@@ -2,10 +2,6 @@
 """
 A class representing rectangle
 """
-#!/usr/bin/python3
-"""
-A class representing rectangle
-"""
 
 
 class Rectangle:
