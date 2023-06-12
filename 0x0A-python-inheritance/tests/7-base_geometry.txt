@@ -1,0 +1,57 @@
+Test Cases for class BaseGeometry
+-------------------------------------------
+
+Test Case 1: Import function
+        >>> fn = __import__("7-base_geometry").BaseGeometry
+
+Test Case 2: Module docstring:
+         >>> md = __import__("7-base_geometry").__doc__
+         >>> len(md) > 1
+         True
+
+Test Case 3: Class docstring
+         >>> cd = __import__("7-base_geometry").BaseGeometry.__doc__
+         >>> len(cd) > 1
+         True
+
+Test Case 4: Method docstring:
+	  >>> mtd1 = __import__("7-base_geometry").BaseGeometry.area.__doc__
+	  >>> len(mtd1) > 1
+	  True
+	  >>> mtd2 = __import__("7-base_geometry").BaseGeometry.integer_validator.__doc__
+          >>> len(mtd2) > 1
+          True
+
+Test Case 5: Area Failure:
+	  >>> i = fn()
+	  >>> i.area()
+	  Traceback (most recent call last):
+	  ...
+	  Exception: area() is not implemented
+
+Test Case 6: Too many arguments for area scenario:
+	  >>> i.area(1)
+	  Traceback (most recent call last):
+          ...
+	  TypeError: area() takes 1 positional argument but 2 were given
+
+Test Case 7: Integer validator for passing integer:
+	  >>> i.integer_validator("integer", 1)
+
+Test Case 8: When integer == 0:
+	  >>> i.integer_validator("integer", 0)
+	  Traceback (most recent call last):
+          ...
+          ValueError: integer must be greater than 0
+
+Test Case 9: Assuming integer < 0;
+	  >>> i.integer_validator("integer", -5)
+	  Traceback (most recent call last):
+          ...
+          ValueError: integer must be greater than 0
+
+Test Case 10: No arguments to integer_validator:
+	  >>> i.integer_validator()
+	  Traceback (most recent call last):
+          ...
+	  TypeError: integer_validator() missing 2 required positional arguments: 'name' and 'value'
