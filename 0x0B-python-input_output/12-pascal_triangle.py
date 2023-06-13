@@ -1,6 +1,5 @@
 #!/usr/bin/python3
-"""Technical interview preparation
-"""
+"""Defines a Pascal's Triangle function"""
 
 
 def pascal_triangle(n):
