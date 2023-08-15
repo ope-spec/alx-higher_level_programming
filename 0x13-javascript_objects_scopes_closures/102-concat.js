@@ -2,9 +2,6 @@
 
 const fs = require('fs');
 
-const [file1, file2, destinationFile] = process.argv.slice(2);
-const concatContent = fs.readFileSync(file1, 'utf-8') + fs.readFileSync(file2, 'utf-8');
-fs.writeFileSync(destinationFile, concatContent);
-
-console.log(`Contents of ${file1} and ${file2} have been concatenated to ${destinationFile}.`);
-
+const file1 = fs.readFileSync(process.argv[2], 'utf8');
+const file2 = fs.readFileSync(process.argv[3], 'utf8');
+fs.writeFileSync(process.argv[4], file1 + file2);
