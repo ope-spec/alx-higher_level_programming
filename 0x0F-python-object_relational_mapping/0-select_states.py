@@ -1,34 +1,25 @@
 #!/usr/bin/python3
-
-""" This script retrieves and displays all states from the hbtn_0e_0_usa database."""
 import MySQLdb
-import sys
+from sys import argv
 
-
-def retrieve_and_display_states():
-    if len(sys.argv) != 4:
-        print("Usage: python3 script_name.py <username> <password> <database>")
-        return
-
-    username = sys.argv[1]
-    password = sys.argv[2]
-    database = sys.argv[3]
-
-    try:
-        db = MySQLdb.connect(host="localhost", user=username,
-                             passwd=password, db=database, port=3306)
-        cur = db.cursor()
-        cur.execute("SELECT * FROM states")
-        rows = cur.fetchall()
-
-        for row in rows:
-            print(row)
-
-        cur.close()
-        db.close()
-    except MySQLdb.Error as e:
-        print("An error occurred:", e)
-
+'''
+This script retrieves and lists all states
+from the hbtn_0e_0_usa database.
+'''
 
 if __name__ == "__main__":
-    retrieve_and_display_states()
+    # Establish a connection to the MySQL database
+    sql = MySQLdb.connect(
+        host="localhost",
+        port=3306,
+        user=argv[1],
+        password=argv[2],
+        database=argv[3])
+
+    sql_cursor = sql.cursor()
+    sql_cursor.execute("SELECT * FROM states ORDER BY id ASC")
+    state_records = sql_cursor.fetchall()
+    for state in state_records:
+        print(state)
+    sql_cursor.close()
+    sql.close()
