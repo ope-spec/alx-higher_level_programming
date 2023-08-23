@@ -1,11 +1,9 @@
 #!/usr/bin/python3
+""" retrieves and lists all states from the hbtn_0e_0_usa database. """
 import MySQLdb
 from sys import argv
 
-'''
-This script retrieves and lists all states
-from the hbtn_0e_0_usa database.
-'''
+
 if __name__ == "__main__":
     sql = MySQLdb.connect(
         host="localhost",
