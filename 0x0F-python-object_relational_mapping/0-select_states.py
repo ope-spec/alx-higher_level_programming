@@ -20,3 +20,4 @@ if __name__ == "__main__":
         print(states)
     sql_s.close()
     db.close()
+
