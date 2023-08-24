@@ -1,29 +1,13 @@
 #!/usr/bin/python3
-""" retrieves and lists all states from the hbtn_0e_0_usa database. """
+"""Retrieves and prints a sorted list of states from a MySQL database."""
 import sys
 import MySQLdb
 
 if __name__ == "__main__":
-    if len(sys.argv) != 4:
-        print("Usage: {} <username> <password> <database>".format(sys.argv[0]))
-        sys.exit(1)
-
-    username = sys.argv[1]
-    password = sys.argv[2]
-    database = sys.argv[3]
-
-    # Connect to the MySQL server
-    db = MySQLdb.connect(host="localhost", port=3306, user=username, passwd=password, db=database)
+    if len(sys.argv) != 4: sys.exit("Usage: {} <username> <password> <database>".format(sys.argv[0]))
+    db = MySQLdb.connect(host="localhost", port=3306, user=sys.argv[1], passwd=sys.argv[2], db=sys.argv[3])
     cursor = db.cursor()
-
-    # Execute the query to select states
-    cursor.execute("SELECT * FROM states ORDER BY id")
-
-    # Fetch and print the results
-    results = cursor.fetchall()
-    for row in results:
-        print(row)
-
-    # Clean up
+    cursor.execute("SELECT * FROM states")
+    [print(row) for row in cursor.fetchall()]
     cursor.close()
     db.close()
