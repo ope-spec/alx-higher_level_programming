@@ -4,8 +4,9 @@ sends a POST request to http://0.0.0.0:5000/search_user
 with the letter as a parameter
 """
 
-import requests
 import sys
+import requests
+
 
 def search_user(letter):
     url = "http://0.0.0.0:5000/search_user"
@@ -15,15 +16,20 @@ def search_user(letter):
     if response.status_code == 200:
         if response.content:
             try:
-                user = json.loads(response.content)
-                print("[{}] {}".format(user["id"], user["name"]))
+                return response.json()
             except JSONDecodeError:
-                print("Not a valid JSON")
+                return {}
         else:
-            print("No result")
+            return {}
     else:
-        print("Error code: {}".format(response.status_code))
+        return {}
+
 
 if __name__ == "__main__":
-    letter = sys.argv[1] if len(sys.argv) > 1 else ""
-    search_user(letter)
+    letter = "" if len(sys.argv) == 1 else sys.argv[1]
+    result = search_user(letter)
+
+    if result == {}:
+        print("No result")
+    else:
+        print("[{}] {}".format(result.get("id"), result.get("name")))
