@@ -12,12 +12,12 @@ import requests
 def search_user(letter):
     url = "http://0.0.0.0:5000/search_user"
     data = {"q": letter}
-    response = requests.post(url, data=data)
+    res = requests.post(url, data=data)
 
-    if response.status_code == 200:
-        if response.content:
+    if res.status_code == 200:
+        if res.content:
             try:
-                return response.json()
+                return res.json()
             except JSONDecodeError:
                 return {}
         else:

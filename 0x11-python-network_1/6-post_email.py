@@ -9,11 +9,11 @@ import requests
 import sys
 
 def post_request(url, email):
-    response = requests.post(url, data={"email": email})
-    return response.text
+    res = requests.post(url, data={"email": email})
+    return res.text
 
 if __name__ == "__main__":
     url = sys.argv[1]
     email = sys.argv[2]
-    response = post_request(url, email)
-    print(response)
+    res = post_request(url, email)
+    print(res)

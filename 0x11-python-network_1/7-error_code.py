@@ -9,11 +9,11 @@ import sys
 
 def send_request(url):
     try:
-        response = requests.get(url)
-        if response.status_code >= 400:
-            print("Error code:", response.status_code)
+        res = requests.get(url)
+        if res.status_code >= 400:
+            print("Error code:", res.status_code)
         else:
-            print(response.text)
+            print(res.text)
     except requests.exceptions.HTTPError as e:
         print(e)
 

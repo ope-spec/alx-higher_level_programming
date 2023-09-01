@@ -11,14 +11,14 @@ import sys
 def get_github_commits(repo_name, owner_name):
     url = "https://api.github.com/repos/{}/{}/commits".format(owner_name, repo_name)
     params = {"per_page": 10}
-    response = requests.get(url, params=params)
+    res = requests.get(url, params=params)
 
-    if response.status_code == 200:
-        commits = response.json()
+    if res.status_code == 200:
+        commits = res.json()
         for commit in commits:
             print("{}: {}".format(commit["sha"], commit["author"]["login"]))
     else:
-        print("Error code: {}".format(response.status_code))
+        print("Error code: {}".format(res.status_code))
 
 
 if __name__ == "__main__":

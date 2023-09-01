@@ -10,8 +10,8 @@ import urllib.request
 import sys
 
 def get_request_id(url):
-    with urllib.request.urlopen(url) as response:
-        return response.headers.get("X-Request-Id")
+    with urllib.request.urlopen(url) as res:
+        return res.headers.get("X-Request-Id")
 
 if __name__ == "__main__":
     url = sys.argv[1]

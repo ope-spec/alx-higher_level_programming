@@ -9,11 +9,11 @@ import urllib.request
 import sys
 
 def send_post_request(url, email):
-    with urllib.request.urlopen(url, data=urllib.parse.urlencode({"email": email}).encode()) as response:
-        return response.read().decode("utf-8")
+    with urllib.request.urlopen(url, data=urllib.parse.urlencode({"email": email}).encode()) as res:
+        return res.read().decode("utf-8")
 
 if __name__ == "__main__":
     url = sys.argv[1]
     email = sys.argv[2]
-    response = send_post_request(url, email)
-    print(response)
+    res = send_post_request(url, email)
+    print(res)

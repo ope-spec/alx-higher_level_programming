@@ -2,18 +2,17 @@
 """Python script that fetches https://alx-intranet.hbtn.io/status"""
 
 
-
 import requests
 
 def get_status():
-    response = requests.get('https://alx-intranet.hbtn.io/status')
+    res = requests.get('https://alx-intranet.hbtn.io/status')
 
-    if response.status_code == 200:
-        print("Body response:")
-        print("\t- type: {}".format(type(response.text)))
-        print("\t- content: {}".format(response.text))
+    if res.status_code == 200:
+        print("Body res:")
+        print("\t- type: {}".format(type(res.text)))
+        print("\t- content: {}".format(res.text))
     else:
-        print("Error code: {}".format(response.status_code))
+        print("Error code: {}".format(res.status_code))
 
 
 if __name__ == '__main__':
