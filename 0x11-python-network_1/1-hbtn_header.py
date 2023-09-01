@@ -9,9 +9,11 @@ found in the header of the response.
 import urllib.request
 import sys
 
+def get_request_id(url):
+    with urllib.request.urlopen(url) as res:
+        return res.headers.get("X-Request-Id")
+
 if __name__ == "__main__":
     url = sys.argv[1]
-
-    request = urllib.request.Request(url)
-    with urllib.request.urlopen(request) as res:
-        print(dict(res.headers).get("X-Request-Id"))
+    request_id = get_request_id(url)
+    print(request_id)
