@@ -15,9 +15,10 @@ def get_github_commits(repo_name, owner_name):
     if response.status_code == 200:
         commits = response.json()
         for commit in commits:
-            print("{}: {}".format(commit["sha"], commit["author"]["name"]))
+            print("{}: {}".format(commit["sha"], commit["author"]["login"]))
     else:
         print("Error code: {}".format(response.status_code))
+
 
 if __name__ == "__main__":
     repo_name = sys.argv[1]
