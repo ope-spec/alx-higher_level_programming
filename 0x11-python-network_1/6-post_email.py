@@ -8,12 +8,8 @@ and finally displays the body of the response.
 import requests
 import sys
 
-def post_request(url, email):
-    res = requests.post(url, data={"email": email})
-    return res.text
-
 if __name__ == "__main__":
     url = sys.argv[1]
-    email = sys.argv[2]
-    res = post_request(url, email)
-    print(res)
+    value = {"email": sys.argv[2]}
+    res = requests.post(url, data=value)
+    print(res.text)

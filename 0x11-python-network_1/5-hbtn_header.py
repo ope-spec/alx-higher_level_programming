@@ -7,11 +7,7 @@ variable X-Request-Id in the response header
 import requests
 import sys
 
-def get_request_id(url):
-    res = requests.get(url)
-    return res.headers.get("X-Request-Id")
-
 if __name__ == "__main__":
     url = sys.argv[1]
-    request_id = get_request_id(url)
-    print(request_id)
+    r = requests.get(url)
+    print(r.headers.get("X-Request-Id"))

@@ -9,28 +9,16 @@ import sys
 import requests
 
 
-def search_user(letter):
-    url = "http://0.0.0.0:5000/search_user"
-    data = {"q": letter}
-    res = requests.post(url, data=data)
-
-    if res.status_code == 200:
-        if res.content:
-            try:
-                return res.json()
-            except JSONDecodeError:
-                return {}
-        else:
-            return {}
-    else:
-        return {}
-
-
 if __name__ == "__main__":
     letter = "" if len(sys.argv) == 1 else sys.argv[1]
-    result = search_user(letter)
+    data = {"q": letter}
 
-    if result == {}:
-        print("No result")
-    else:
-        print("[{}] {}".format(result.get("id"), result.get("name")))
+    res = requests.post("http://0.0.0.0:5000/search_user", data=data)
+    try:
+        res = res.json()
+        if res == {}:
+            print("No result")
+        else:
+            print("[{}] {}".format(res.get("id"), res.get("name")))
+    except ValueError:
+        print("Not a valid JSON")
