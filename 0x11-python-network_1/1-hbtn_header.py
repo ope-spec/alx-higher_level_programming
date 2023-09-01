@@ -9,9 +9,8 @@ found in the header of the response.
 import urllib.request
 import sys
 
-url = sys.argv[1]
-
 if __name__ == "__main__":
+    url = sys.argv[1]
 
     request = urllib.request.Request(url)
     with urllib.request.urlopen(request) as res:
