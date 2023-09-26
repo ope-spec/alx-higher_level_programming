@@ -12,20 +12,20 @@ request(apiUrl, (error, response, body) => {
   } else {
     const movieData = JSON.parse(body);
     const characterUrls = movieData.characters;
-    function fetchCharacterName(url) {
-      request(url, (characterError, characterResponse, characterBody) => {
-        if (characterError) {
-          console.error(characterError);
-        } else if (characterResponse.statusCode !== 200) {
-          console.error(`Character request failed with status code ${characterResponse.statusCode}`);
-        } else {
-          const characterData = JSON.parse(characterBody);
-          console.log(characterData.name);
-        }
-      });
-    }
-    characterUrls.forEach((url) => {
-      fetchCharacterName(url);
-    });
-  }
+	function fetchCharacterName(url) {
+		request(url, (characterError, characterResponse, characterBody) => {
+			if (characterError) {
+				console.error(characterError);
+			} else if (characterResponse.statusCode !== 200) {
+				console.error(`Character request failed with status code ${characterResponse.statusCode}`);
+			} else {
+				const characterData = JSON.parse(characterBody);
+				console.log(characterData.name);
+			}
+		});
+	}
+	characterUrls.forEach((url) => {
+		fetchCharacterName(url);
+	});
+}
 });
