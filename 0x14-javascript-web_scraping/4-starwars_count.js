@@ -9,17 +9,14 @@ request(url, function (error, response, body) {
   } else if (response.statusCode === 200) {
     const films = JSON.parse(body).results;
     let count = 0;
-
     for (const film of films) {
       const filmChars = film.characters;
-      
       for (const characterUrl of filmChars) {
         if (characterUrl.includes('18')) {
           count++;
         }
       }
     }
-
     console.log(count);
   } else {
     console.error(`An error occurred. Status code: ${response.statusCode}`);
